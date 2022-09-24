@@ -1,52 +1,34 @@
-package com.example.activity_lifecycle;
+package com.example.practical_3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Log.d("Activity Lifecycle", "Activity Created");
-    }
+        setContentView(R.layout.registration_main);
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        Log.d("Activity Lifecycle" , "Activity Started");
-    }
+        Button b1 = findViewById(R.id.btn);
 
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        Log.d("Activity Lifecycle" , "Activity Destroyed");
-    }
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    @Override
-    protected void onPause(){
-        super.onPause();
-        Log.d("Activity Lifecycle","Activity Paused");
-    }
+                //create a toast
+                Context context = getApplicationContext();
+                CharSequence text = "Button Clicked";
+                int duration = Toast.LENGTH_LONG;
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Log.d("Activity Lifecycle","Activity Resume");
-    }
-
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        Log.d("Activity Lifecycle","Activity Restarted");
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        Log.d("Activity Lifecycle","Activity Stopped");
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        });
     }
 }
